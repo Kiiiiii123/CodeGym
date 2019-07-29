@@ -1,3 +1,4 @@
+#暴力法，双重循环
 public class Solution {
     public int[] TwoSum(int[] nums, int target) {
         int[] indexes=new int[2];
