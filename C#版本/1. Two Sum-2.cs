@@ -1,4 +1,4 @@
-#不使用Add方法而使用索引器
+//不使用Add方法而使用索引器
 public class Solution {
     public int[] TwoSum(int[] nums, int target) {
         Dictionary<int,int> pairs=new Dictionary<int,int>();
