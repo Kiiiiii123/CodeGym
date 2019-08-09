@@ -31,6 +31,7 @@ class Solution:
 运行时间：213ms
 占用内存：5724k
 '''
+
 class Solution:
     # array 二维列表
     def Find(self, target, array):
