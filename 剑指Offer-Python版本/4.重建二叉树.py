@@ -3,7 +3,28 @@
 '''
 
 '''
-方法：用insert()，一直在index=0的位置插入遍历的值
-运行时间：30ms
-占用内存：5708k
+方法：利用二叉树前序遍历和中序遍历的特点，前序遍历的第一个值一定为根节点，对应于中序遍历中间的一个点，在中序遍历中，该点左侧的值为根节点的左子树，右侧的值为根节点的右子树。这时可以利用递归，取前序遍历的[1:i+1]和中序遍历的[:i]作为对应的左子树继续上一个过程，取前序遍历的[i+1:]和中序遍历的[i+1:]对应与右子树继续上一个过程，重建二叉树。
+运行时间：68ms
+占用内存：5792k
 '''
+
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    # 返回构造的TreeNode根节点
+    def reConstructBinaryTree(self, pre, tin):
+        # write code here
+        if not pre and not tin:
+            return None
+        #set是一个无序且不重复的元素集合。
+        if set(pre)!=set(tin):
+            return None
+        root=TreeNode(pre[0])
+        i=tin.index(pre[0])
+        #递归
+        root.left=self.reConstructBinaryTree(pre[1:i+1],tin[:i])
+        root.right=self.reConstructBinaryTree(pre[i+1:],tin[i+1:])
+        return root
