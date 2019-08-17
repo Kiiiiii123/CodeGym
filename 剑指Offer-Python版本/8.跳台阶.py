@@ -3,7 +3,17 @@
 '''
 
 '''
-方法：递归，斐波那契数列的变形f(n)=f(n-1)+f(n-2)
-运行时间：34ms
-占用内存：5732k
+方法一：递归，斐波那契数列的变形f(n)=f(n-1)+f(n-2)，效率低，超出时间上限
 '''
+
+class Solution:
+    def jumpFloor(self, number):
+        # write code here
+        if number in (1,2):
+            return number
+        return self.jumpFloor(number-1)+self.jumpFloor(number-2)
+
+'''
+方法二：递归，斐波那契数列的变形f(n)=f(n-1)+f(n-2)，效率低，超出时间上限
+'''
+      
