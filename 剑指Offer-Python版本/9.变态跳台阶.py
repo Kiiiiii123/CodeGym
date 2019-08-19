@@ -5,4 +5,15 @@
 '''
 方法：斐波那契数列的变形，f(n) = f(n-1)+f(n-2)+...+f(n-(n-1)) + f(n-n)
                         f(0) + f(1) + f(2) + f(3) + ... + f(n-1) = f(n) = 2*f(n-1)
+运行时间：24ms
+占用内存：5752k
 '''
+
+class Solution:
+    def jumpFloorII(self, number):
+        # write code here
+        ans=1
+        if number>=2:
+            for i in range(2,number+1):
+                ans=ans*2
+        return ans
