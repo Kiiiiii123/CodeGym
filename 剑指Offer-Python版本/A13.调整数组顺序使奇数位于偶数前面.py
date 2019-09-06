@@ -21,8 +21,12 @@ class Solution:
         return odd+even
     
 '''
-方法二：
-运行时间：27ms
-占用内存：5724k
+方法二：函数的扩展功能。把函数中的判断条件拿出来，写成一个函数。用python可以一行搞定： lambda大法。
+运行时间：32ms
+占用内存：5632k
 '''
-      
+
+class Solution:
+    def reOrderArray(self, array):
+        # write code here
+        return sorted(array,key=lambda c:c%2,reverse=True)
