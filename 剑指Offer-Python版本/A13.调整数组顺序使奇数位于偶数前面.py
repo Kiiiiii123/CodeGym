@@ -3,7 +3,26 @@
 '''
 
 '''
-方法一：
-运行时间：28ms
-占用内存：5872k
+方法一：新建两个数组分别存放奇数和偶数，最后拼接
+运行时间：27ms
+占用内存：5724k
 '''
+
+class Solution:
+    def reOrderArray(self, array):
+        # write code here
+        odd=[]
+        even=[]
+        for i in range(len(array)):
+            if array[i]%2==0:
+                even.append(array[i])
+            else:
+                odd.append(array[i])
+        return odd+even
+    
+'''
+方法二：
+运行时间：27ms
+占用内存：5724k
+'''
+      
