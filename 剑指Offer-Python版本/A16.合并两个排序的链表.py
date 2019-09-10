@@ -16,3 +16,24 @@
     明确return条件,例如,当p1,p2其中有一个为空时,递归任务结束；
 几乎所有的递归算法都可以沿着这三个要求思考构造,很自然不怕写递归算法,三个问题能自己在脑里回答出来,稍加修饰就是一个完整的递归算法。
 '''
+
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution:
+    # 返回合并后列表
+    def Merge(self, pHead1, pHead2):
+        # write code here
+        if not pHead1:
+            return pHead2
+        if not pHead2:
+            return pHead1
+        mergeHead=None
+        if pHead1.val<pHead2.val:
+            mergeHead=pHead1
+            mergeHead.next=self.Merge(pHead1.next,pHead2)
+        else:
+            mergeHead=pHead2
+            mergeHead.next=self.Merge(pHead1,pHead2.next)
+        return mergeHead
