@@ -17,6 +17,22 @@
 
 '''
 方法：递归交换树的左右节点即可。
-运行时间：27ms
-占用内存：5864k
+运行时间：30ms
+占用内存：6380k
 '''
+
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    # 返回镜像树的根节点
+    def Mirror(self, root):
+        # write code here
+        if root==None or (root.left==None and root.right==None):
+            return
+        root.left,root.right=root.right,root.left
+        self.Mirror(root.left)
+        self.Mirror(root.right)
+        return root
