@@ -7,3 +7,28 @@
 运行时间：24ms
 占用内存：5844k
 '''
+
+class Solution:
+    # matrix类型为二维列表，需要返回列表
+    def printMatrix(self, matrix):
+        # write code here
+        result=[]
+        while matrix:
+            result+=matrix.pop(0)
+            #matrix[0]防止测试用例pop(0)到最后只剩一个元素出错
+            if not matrix or not matrix[0]:
+                break
+            matrix=self.turn(matrix)
+        return result
+    
+    def turn(self,matrix):
+        newMat1=[]
+        num_row=len(matrix)
+        num_colum=len(matrix[0])
+        for i in range(num_colum):
+            newMat2=[]
+            for j in range(num_row):
+                newMat2.append(matrix[j][i])
+            newMat1.append(newMat2)
+        newMat1.reverse()   
+        return newMat1
