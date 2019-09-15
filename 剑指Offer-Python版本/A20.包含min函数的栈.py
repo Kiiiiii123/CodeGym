@@ -7,3 +7,27 @@
 运行时间：26ms
 占用内存：5728k
 '''
+
+class Solution:
+    #初始化
+    def __init__(self):
+        self.stack=[]
+        #建立辅助栈
+        self.min_stack=[]
+    def push(self, node):
+        # write code here
+        self.stack.append(node)
+        if not self.min_stack or node <= self.min_stack[-1]:
+            self.min_stack.append(node)
+    def pop(self):
+        # write code here
+        #这里需要注意顺序
+        if self.stack[-1]==self.min_stack[-1]:
+            self.min_stack.pop()
+        self.stack.pop()
+    def top(self):
+        # write code here
+        return self.stack[-1]
+    def min(self):
+        # write code here
+        return self.min_stack[-1]
