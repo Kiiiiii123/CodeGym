@@ -9,20 +9,20 @@
 '''
 
 if __name__=='__main__':
-  number=input()
-  low=int(number.split(' ')[0])
-  high=int(number.split(' ')[1])
+  number = input()
+  low = int(number.split(' ')[0])
+  high = int(number.split(' ')[1])
   
-  m=n=0
-  list=[]
+  m = n = 0
+  list = []
   for i in range(low,high):
     for j in range(2,i):
       if i%j==0:
         break;
     list.append(i)
   for item in list:
-    m+=item%10
-    n+=item//10%10
+    m += item%10
+    n += item//10%10
   if m>n:
     print(n)
   else:
