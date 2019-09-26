@@ -4,9 +4,15 @@
 '''
 
 '''
-方法： 
+方法： 使用res模块进行字符串字符替换
 '''
 
 import re 
 if __name__=='__main__':
-  
+  result=input()
+  first=0
+  if 'A' in s:
+    s=re.sub('A','12 34',s)
+    s=re.sub('B','AB CD',s)
+first=len(s.split(' '))
+print(first,s[1:])
