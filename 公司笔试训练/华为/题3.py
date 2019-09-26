@@ -10,8 +10,8 @@
 if __main__=='__main__':
   count=0
   p=input()
-  for(int i=1;i<p;i++):
-    for(j=i;j<p;j++):
+  for i in range(p):
+    for j in range(i,p):
       k=p-i-j
       if i^2+j^2==k^2:
         count+=1
