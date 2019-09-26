@@ -22,5 +22,15 @@ if __main__=='__main__':
 '''
 
 '''
-方法三：一重循环
+方法三：一重循环，给出第一个边，在3~p/3，然后根据c=p-a-c, a^2+b^2=c^2,化简得到b=(p*(p-2*a))/(p-a)/2; 当b为正整数的时候，满足
 '''
+if __name__=='__main__':
+  p=input()
+  count=0
+  for i in range(3,int(p/3)):
+    if (p*(p-2*i))%(p-i)==0:
+      j=(p*(p-2*i)/(p-i))/2
+      k=p-i-j
+      if k>j:
+        count+=1
+  print(count)
