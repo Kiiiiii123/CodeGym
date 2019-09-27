@@ -9,5 +9,20 @@
 
 if __name__=="__main__":
   list=input()
-  minstep=101
+  maxstep=101
+  
+  for i in range(len(list)/2):
+    pos=i
+    step=1
+    while pos<len(list)-1:
+      pos+=list[i]
+      step+=1
+    if pos==len(list)-1:
+      if maxstep>step:
+        maxstep=step
+  if maxstep==101:
+    print(-1)
+  else:
+    print(maxstep)
+  
   
