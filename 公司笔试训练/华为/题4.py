@@ -16,13 +16,15 @@ if __name__=='__main__':
   dp[0]=0
   for i in range(1,amount+1):
     for j in range(len(coins)):
+      # 只有硬币小于当前金额, 才能进行递推
       if coins[j]<=i:
-        dp[i]=min(dp[i],dp[amount-coins[j]]+1)
+        # dp[i]要么等于自身(已经被计算过),要么等于coins[j](一次) + (i - coins[j])的次数
+        dp[i]=min(dp[i],dp[i-coins[j]]+1)
         
   if dp[amount]>amount:
     print(-1)
   else:
-    print(ap[amount])
+    print(dp[amount])
        
   
   
