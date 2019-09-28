@@ -24,9 +24,25 @@ class Solution:
 '''
 
 class Solution:
-    # 输入为列表
-    def reverseString(self, s) -> None:
+    # 输入为列表，这里题目简化过了，直接给了列表
+    def reverseString(self, s: List[str]) -> None:
         """
         Do not return anything, modify s in-place instead.
         """
         s[:]=s[::-1]
+        
+'''
+方法三： 常规方法进行替换，面试时仍得写这个
+执行用时：236ms
+内存消耗：17.7MB
+'''
+
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        for i in range(len(s)//2):
+            temp=s[i]
+            s[i]=s[-i-1]
+            s[-i-1]=temp
