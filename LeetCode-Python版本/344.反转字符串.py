@@ -4,20 +4,10 @@
 '''
 
 '''
-方法一： 如果输入是字符串则先转列表后切片翻转，最后再转成字符串，两次翻转很耗时；如果输入已经是列表则直接翻转
-执行用时：240ms
-内存消耗：18MB
+方法一： 字符串则先转列表后切片翻转，最后再转成字符串，两次翻转很耗时
 '''
 
 class Solution:
-    # 输入为列表
-    def reverseString(self, s: List[str]) -> None:
-        """
-        Do not return anything, modify s in-place instead.
-        """
-        s[:]=s[::-1]
-      
-    # 输入为字符串
     def reverseString(self, s):
         """
         :type s: str
@@ -26,3 +16,17 @@ class Solution:
         temp_list = list(s)
         temp_list[:] = temp_list[::-1]
         s=''.join(temp_list)
+
+'''
+方法二： 直接切片翻转
+执行用时：240ms
+内存消耗：18MB
+'''
+
+class Solution:
+    # 输入为列表
+    def reverseString(self, s) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        s[:]=s[::-1]
