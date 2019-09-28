@@ -32,7 +32,7 @@ class Solution:
         s[:]=s[::-1]
         
 '''
-方法三： 常规方法进行替换，面试时仍得写这个
+方法三： 常规方法进行替换
 执行用时：236ms
 内存消耗：17.7MB
 '''
@@ -46,3 +46,29 @@ class Solution:
             temp=s[i]
             s[i]=s[-i-1]
             s[-i-1]=temp
+
+'''
+方法四： 面试时的方法，上述的交换不是python语言中的常规操作，使用双指针，注意python中的双指针通常指的是索引
+1:用双指针,同时从头部和尾部开始进行交换2个指针的值
+2:自增自减地向中间遍历
+3:直到触发基准条件:2个指针开始中间重合
+执行用时：236ms
+内存消耗：17.6MB
+'''
+
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+    if len(s)<2:
+        return
+    left=0
+    right=len(s)-1
+    while left<right:
+        s[left],s[right]=s[right],s[left]
+        left+=1
+        right-=1
+        
+        
+        
