@@ -28,3 +28,6 @@ class Solution:
         """
         node.val=node.next.val
         node.next=node.next.next
+
+#改为一行代码解决
+        node.val,node.next=node.next.val,node.next.next
