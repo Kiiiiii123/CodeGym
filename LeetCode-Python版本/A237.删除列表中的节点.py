@@ -9,5 +9,22 @@
 '''
 
 '''
-方法： 
+方法：直接对链表进行修改，考察链表数据结构的删除链表节点部分
+执行用时：52ms
+内存消耗：14.1MB
 '''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def deleteNode(self, node):
+        """
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
+        """
+        node.val=node.next.val
+        node.next=node.next.next
