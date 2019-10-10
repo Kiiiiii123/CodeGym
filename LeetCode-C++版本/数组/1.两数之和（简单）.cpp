@@ -62,5 +62,22 @@ public:
 空间复杂度：O（n）所需的额外空间取决于哈希表中存储的元素数量，该表最多需要存储n个元素。
 */
 
-
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        map<int,int> a;
+        vector<int> b(2,-1);
+        for(int i=0;i<nums.size();i++)
+        {
+            if(a.count(target-nums[i])>0 && a[target-nums[i]]!=i)
+            {
+                b[0] = i;
+                b[1] =a[target-nums[i]];
+                break;
+            }
+            a[nums[i]] = i;
+        }
+        return b;
+    }
+};
 
