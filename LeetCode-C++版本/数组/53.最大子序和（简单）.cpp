@@ -31,3 +31,22 @@ public:
 首先对数组进行遍历，当前最大连续子序列和为sum，结果为res，如果sum>０，则说明sum对结果有增益，则sum保留并加上当前遍历的数字，如果sum<=0，则说明sum对结果无增益，需要舍弃，则sum直接更新为当前遍历数字。每次比较sum和res的大小，将最大值置为res，遍历结束返回结果。
 时间复杂度：Ｏ(n)
 */
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int res = nums[0];
+        int sum = 0;
+        for(int i = 0;i<nums.size();++i)
+        {
+            if(sum > 0)
+            {
+                sum += nums[i];
+            }else{
+                sum = nums[i];
+            }
+            res = max(res,sum);
+        }
+        return res;
+    }
+};
