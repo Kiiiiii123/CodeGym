@@ -8,3 +8,26 @@
 如果该题目暴力解决的话需要Ｏ(n)的时间复杂度，但是如果二分的话则可以降到Ｏ(logn)的时间复杂度，整体思路和普通的二分查找几乎没有区别，先设定左侧下标left和右侧下标right，在计算中间下标mid,每次根据nums[mid]和target之间的大小进行判断，相等则直接返回下标，nums[mid]<target则left右移，nums[mid]>target则right左移，查找结束如果没有相等值则返回left，该值为插入位置。二分查找的思路不难理解，但是边界条件容易出错，比如循环结束条件中left和right的关系，更新left和right的位置时要不要加１减１。
 时间复杂度：Ｏ(logn)
 */
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int left =0;
+        int right = nums.size()-1;
+        while( left <= right )  /*注意边界*/
+        {
+            int mid = ( left + right )/2;
+            if( nums[mid] == target )
+                return mid;
+            else if( nums[mid] > target )
+            {
+                right = mid-1;
+            }
+            else
+            {
+                left = mid+1;
+            }
+        }
+        return left;
+    }
+};
