@@ -33,3 +33,23 @@ public:
 时间复杂度：Ｏ(n) ｉ和ｎ最多遍历ｎ步，在这个方法中，赋值操作的次数等于要删除的元素的数量，因此，如果要移除的元素很少，效率会更高。
 空间复杂度：Ｏ(1)
 */
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        if(nums.size() == 0) return 0;
+        int i = 0;
+        int length = nums.size();
+        while(i<length)
+        {
+            if(nums[i] == val)
+            {
+                nums[i] = nums[length-1];
+                length--;
+            }
+            else
+                i++;
+        }
+        return length;
+    }
+};
