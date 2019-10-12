@@ -93,3 +93,16 @@ public:
         return second;
     }
 };
+
+/*方法五：斐波那契公式
+使用公式找出第n个斐波那契数。
+*/
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        double sqrt5 = sqrt(5);
+        double fibn = pow((1+sqrt5)/2,n+1) - pow((1-sqrt5)/2,n+1);
+        return (int)(fibn/sqrt5);
+    }
+};
