@@ -56,3 +56,24 @@ public:
 时间复杂度：Ｏ(n) 单循环到了n。
 空间复杂度：Ｏ(n) dp数组用到了n的空间。
 */
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n==1)
+            return 1;
+        vector<int> demo(n+1,-1);
+        demo[1] = 1;
+        demo[2] = 2;
+        for(int i=3;i<=n;i++){
+            demo[i] = demo[i-1] + demo[i-2];
+        }
+        return demo[n];
+    }
+};
+
+/*方法四：斐波那契数
+在上述方法中，我们使用dp数组，其中dp[i] = dp[i-1] +　dp[i-2]，可以很容易通过分析得出dp[i]其实是第i个斐波那契数，现在我们找出以１和２作为第一项和第二项的斐波那契数列中的第n个数。
+时间复杂度：Ｏ(n)　单循环到n，需要计算第n个斐波那契数。
+时间复杂度：Ｏ(1)　使用常量级空间。
+*/
