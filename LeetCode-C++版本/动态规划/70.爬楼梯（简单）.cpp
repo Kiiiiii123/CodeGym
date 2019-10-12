@@ -77,3 +77,19 @@ public:
 时间复杂度：Ｏ(n)　单循环到n，需要计算第n个斐波那契数。
 时间复杂度：Ｏ(1)　使用常量级空间。
 */
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n==1)
+            return 1;
+        int first = 1;
+        int second = 2;
+        for(int i=3;i<=n;i++){
+            int third = first + second;
+            first = second;
+            second = third;
+        }
+        return second;
+    }
+};
