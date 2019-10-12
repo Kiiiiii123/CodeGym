@@ -8,3 +8,28 @@
 时间复杂度：Ｏ(n^3)　假设n是输入字符串的长度，(n(n-1))/2是此类子字符串（不包括字符本身是回文的一般解决）的总数。因为验证每个子字符串需要Ｏ(n)，所以时间复杂度是Ｏ(n^3)。
 空间复杂度：Ｏ(1) 
 */
+
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        string temp = "";
+        string res = "";
+        for (int i =0;i<s.length();i++){
+            for(int j =i;j<s.length();j++){
+                temp += s[j];
+                string rev = temp;
+                std::reverse(rev.begin(),rev.end());
+                if(temp == rev){
+                    res = res.length()>temp.length()?res:temp;
+                }
+            }
+            temp = "";
+        }
+        return res;
+    }
+};
+/*超出时间限制*/
+
+/*方法二：
+
+*/
