@@ -32,3 +32,21 @@ public:
 空间复杂度：Ｏ(n) 
 */
 
+class Solution {
+public:
+    int climbStairs(int n) {
+        vector<int> demo(n+1,-1);
+        return climb_Stairs(0,n,demo);
+    }
+    
+    int climb_Stairs(int i,int n,vector<int> &demo){
+        if(i > n)
+            return 0;
+        if(i == n)
+            return 1;
+        if(demo[i]>0)
+            return demo[i];
+        demo[i] = climb_Stairs(i+1,n,demo) + climb_Stairs(i+2,n,demo);
+        return demo[i];
+    }
+};
