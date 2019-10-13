@@ -44,7 +44,7 @@ public:
             return s;
         int start = 0;
         int longest = 1;
-        vector<vector<int>>  dp(size,vector<int>(size));
+        vector<vector<int>>  dp(size,vector<int>(size));  //注意这里使用动态数组，也可以使用静态数组
         for(int i = 0;i<size;i++)
         {
             dp[i][i] = 1;
