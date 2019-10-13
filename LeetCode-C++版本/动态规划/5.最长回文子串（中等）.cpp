@@ -35,3 +35,39 @@ public:
 时间复杂度：Ｏ(n^2)　
 空间复杂度：Ｏ(n^2) 
 */
+
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int size = s.size();
+        if(size == 0|| size == 1)
+            return s;
+        int start = 0;
+        int longest = 1;
+        vector<vector<int>>  dp(size,vector<int>(size));
+        for(int i = 0;i<size;i++)
+        {
+            dp[i][i] = 1;
+            if(i<size-1 && s[i] == s[i+1])
+            {
+                dp[i][i+1] = 1;
+                longest = 2;
+                start = i;
+            }
+        }
+        for(int length = 3;length<=size;length++)
+        {
+            for(int left = 0;left + length - 1<size;left++)
+            {
+                int right = left + length - 1;
+                if(s[left] == s[right] && dp[left+1][right-1] == 1)  //状态转移
+                {
+                    dp[left][right] = 1;
+                    start = left;
+                    longest = length;
+                }
+            }
+        }
+        return s.substr(start,longest);
+    }
+};
