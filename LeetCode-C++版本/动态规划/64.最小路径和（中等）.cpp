@@ -26,3 +26,26 @@
 时间复杂度：Ｏ(M*N) 遍历整个grid元素。
 空间复杂度：Ｏ(1) 直接修改原矩阵，不使用额外空间。
 */
+
+class Solution {
+public:
+    int minPathSum(vector<vector<int>>& grid) {
+        int len1 = grid.size();
+        int len2 = grid[0].size();
+        for(int i = 0;i<len1;++i)
+        {
+            for(int j = 0;j<len2;++j)
+            {
+                if(i == 0 && j == 0)
+                    continue;
+                else if(i == 0 && j != 0)
+                    grid[i][j] = grid[i][j-1] + grid[i][j];
+                else if(i != 0 && j == 0)
+                    grid[i][j] = grid[i-1][j] + grid[i][j];
+                else if(i != 0 && j != 0)
+                    grid[i][j] = min(grid[i-1][j],grid[i][j-1]) + grid[i][j];
+            }
+        }
+        return grid[len1-1][len2-1];
+    }
+};
