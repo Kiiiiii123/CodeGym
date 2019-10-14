@@ -61,3 +61,21 @@ public:
 /*方法三：动态规划
 自底向上的动态规划，从最小规模的问题向上推，动态规划一般都脱离了递归，由循环迭代完成计算。
 */
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(1+amount,1+amount);
+        dp[0] = 0;
+        for(int i =1;i <= amount;++i)
+        {
+            for(int coin:coins)
+            {
+                if(i < coin)
+                    continue;
+                dp[i] = min(dp[i],dp[i-coin] + 1);
+            }
+        }
+        return dp[amount]>amount?-1:dp[amount];
+    }
+};
