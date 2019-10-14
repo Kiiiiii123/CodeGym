@@ -16,10 +16,10 @@ public:
         for(int coin:coins)
         {
             if(amount<coin)
-                continue;
+                continue;  //跳出。
             int sub = coinChange(coins,amount-coin);
             if(sub == -1)
-                continue;
+                continue;  //跳出。
             minSum = min(minSum,1 + sub);
         }
         return minSum == INT_MAX?-1:minSum;  
