@@ -29,3 +29,22 @@ public:
 
 /*方法二：动态规划
 */
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int size = nums.size();
+        int max = nums[0];
+        int dp[size];
+        dp[0] = nums[0];
+        for(int i = 1;i<size;++i)
+        {
+            if(dp[i-1] + nums[i] > nums[i])
+                dp[i] = dp[i-1] + nums[i];
+            else
+                dp[i] = nums[i];
+            max = max>dp[i]?max:dp[i];
+        }
+        return max;
+    }
+};
