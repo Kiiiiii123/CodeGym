@@ -4,5 +4,24 @@
 */
 
 /*方法一：暴力法
-
+根据最优子结构进行暴力递归。
 */
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        if(amount == 0)
+            return 0;
+        int minSum = INT_MAX;
+        for(int coin:coins)
+        {
+            if(amount<coin)
+                continue;
+            int sub = coinChange(coins,amount-coin);
+            if(sub == -1)
+                continue;
+            minSum = min(minSum,1 + sub);
+        }
+        return minSum == INT_MAX?-1:minSum;  
+    }
+};
