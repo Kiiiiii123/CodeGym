@@ -25,3 +25,39 @@ public:
         return minSum == INT_MAX?-1:minSum;  
     }
 };
+
+/*方法二：带备忘录的递归算法
+备忘录能大大减少子问题的数量，完全消除子问题的冗余。
+*/
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> memo(1+amount,-2);
+        return helper(coins,amount,memo);
+    }
+    
+    int helper(vector<int>& coins,int amount,vector<int>& memo)
+    {
+        if(amount == 0)
+            return 0;
+        if(memo[amount] != -2)
+            return memo[amount];
+        int minSum = INT_MAX;
+        for(int coin:coins)
+        {
+            if(amount<coin)
+                continue;
+            int sub = helper(coins,amount-coin,memo);
+            if(sub == -1)
+                continue;
+            minSum = min(minSum,1 + sub);
+        }
+        memo[amount] = minSum == INT_MAX?-1:minSum;
+        return  memo[amount];
+    }
+};
+
+/*方法三：动态规划
+
+*/
