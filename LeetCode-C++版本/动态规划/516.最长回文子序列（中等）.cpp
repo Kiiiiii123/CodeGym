@@ -9,3 +9,24 @@
 初始化：f[i][i] = 1，单个字符的最长回文序列是1。
 结果：f[0][n-1]。
 */
+
+class Solution {
+public:
+    int longestPalindromeSubseq(string s) {
+        int len = s.size();
+        //vector<vector<int>> dp(len,vector<int>(len,0));
+        int dp[len][len] = {0};  //使用多维数组要比vector性能优化，不初始化容易导致程序错乱。
+        for(int i = len-1;i >= 0;--i)
+        {
+            dp[i][i] = 1;
+            for(int j = i+1;j < len;++j)
+            {
+                if(s[i] == s[j])
+                    dp[i][j] = dp[i+1][j-1] + 2;
+                else
+                    dp[i][j] = max(dp[i+1][j],dp[i][j-1]);
+            }
+        }
+        return dp[0][len-1];
+    }
+};
