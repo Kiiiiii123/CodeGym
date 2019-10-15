@@ -64,15 +64,15 @@ public:
         stack<TreeNode*> stack;  //存放未遍历完成的点
         while(root != nullptr || !stack.empty())
         {
-            while(root != nullptr)
+            while(root != nullptr)  //遍历左子树，直至root为空
             {
                 stack.push(root);
                 root = root->left;
             }
-            root = stack.top();
+            root = stack.top();  //左子树为空，可以输出root
             stack.pop();
             res.push_back(root->val);
-            root = root->right;
+            root = root->right;  //如果root->right为空，下次循环继续弹出栈顶元素
         }
         return res;
     }
