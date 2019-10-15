@@ -48,4 +48,32 @@ public:
 空间复杂度：Ｏ(n)
 */
 
-
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode*> stack;  //存放未遍历完成的点
+        while(root != nullptr || !stack.empty())
+        {
+            while(root != nullptr)
+            {
+                stack.push(root);
+                root = root->left;
+            }
+            root = stack.top();
+            stack.pop();
+            res.push_back(root->val);
+            root = root->right;
+        }
+        return res;
+    }
+};
