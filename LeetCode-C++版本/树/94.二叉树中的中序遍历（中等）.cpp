@@ -12,7 +12,34 @@
 */
 
 /*方法一：递归法
-时间复杂度：O(n)
-空间复杂度：O(1)
 */
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+private:
+    vector<int> res;
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        if(root == nullptr)
+            return res;
+        else
+        {
+            inorderTraversal(root->left);
+            res.push_back(root->val);
+            inorderTraversal(root->right);
+        }
+        return res;
+    }
+};
+
+/*方法二：非递归方法
+基于栈的遍历
+*/
