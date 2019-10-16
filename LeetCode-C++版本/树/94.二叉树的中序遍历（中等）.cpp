@@ -43,7 +43,7 @@ public:
 };
 
 /*方法二：非递归方法
-基于栈的遍历
+基于栈的遍历，不断压入左节点后更新为右节点重复。
 时间复杂度：Ｏ(n)
 空间复杂度：Ｏ(n)
 */
@@ -64,7 +64,7 @@ public:
         stack<TreeNode*> stack;  //存放未遍历完成的点
         while(root != nullptr || !stack.empty())
         {
-            while(root != nullptr)  //遍历左子树，直至root为空
+            while(root)  //遍历左子树，直至root为空
             {
                 stack.push(root);
                 root = root->left;
