@@ -83,3 +83,40 @@ public:
 /*方法三：使用两个栈
 先将节点１放到栈１中后弹出并放到栈２中，节点１的左节点２先进入栈１，后节点１的右节点放入到栈１中，从栈１中弹出节点３放到栈２中，节点３的左右子节点依次放入到栈１中，从栈１中弹出节点７放入到栈２中，节点７无子节点所以继续，从栈１中弹出节点６放入到栈２中，节点６也无子节点所以依然继续，从栈１中弹出节点２放入到栈２中，节点２的左右子节点４和５依次放入到栈１中，从栈１中弹出节点５放入到栈２中，节点５无子节点所以继续，将节点４放入到栈２中，节点４无子节点且栈１为空，过程停止，最后只需要将栈２中的元素依次弹出并输出即可。
 */
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode*> stack1,stack2;
+        if(!root)
+            return res;
+        stack1.push(root);
+        TreeNode* tmp;
+        while(!stack1.empty())
+        {
+            tmp = stack1.top();
+            stack1.pop();
+            stack2.push(tmp);
+            if(tmp->left)
+                stack1.push(tmp->left);
+            if(tmp->right)
+                stack1.push(tmp->right);
+        }
+        while(!stack2.empty())
+        {
+            res.push_back(stack2.top()->val);
+            stack2.pop();
+        }
+        return res;
+    }
+};
