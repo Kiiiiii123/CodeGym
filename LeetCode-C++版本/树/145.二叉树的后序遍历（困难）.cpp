@@ -42,3 +42,40 @@ public:
         return res; 
     }
 };
+
+/*方法二：迭代法
+按照与前序相似的方法（前序压栈的顺序是先右后左，这里是先左后右），先得到一个结果，然后对结果倒序一下。
+*/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        stack<TreeNode*> stack;
+        vector<int> res;
+        if(!root)
+            return res;
+        stack.push(root);
+        while(!stack.empty())
+        {
+            TreeNode* tmp = stack.top();
+            stack.pop();
+            if(tmp)
+            {
+                res.push_back(tmp->val);
+                stack.push(tmp->left);
+                stack.push(tmp->right);
+            }
+        }
+        reverse(res.begin(),res.end());
+        return res;
+    }
+};
