@@ -120,3 +120,48 @@ public:
         return res;
     }
 };
+
+/*方法四：使用一个栈
+利用了一个用于判定是否已经弹出的变量pre。
+*/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        stack<TreeNode*> stack;
+        vector<int> res;
+        if(!root)
+            return res;
+        TreeNode* pre = root;  //最近一次弹出并输出的节点
+        TreeNode* curr = NULL;
+        stack.push(root);
+        while(!stack.empty())
+        {
+            curr = stack.top();  //当前stack的栈顶节点
+            if(curr->left && pre != (curr->left) && pre != (curr->right))
+            {
+                stack.push(curr->left);
+            }
+            else if(curr->right && pre != (curr->right))
+            {
+                stack.push(curr->right);                
+            }
+            else
+            {
+                stack.pop();              
+                res.push_back(curr->val); 
+                pre = curr;
+            }
+        }
+        return res;
+    }
+};
