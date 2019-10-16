@@ -141,17 +141,17 @@ public:
         vector<int> res;
         if(!root)
             return res;
-        TreeNode* pre = root;  //最近一次弹出并输出的节点
+        TreeNode* pre = root;  //最近一次弹出并打印的节点
         TreeNode* curr = NULL;
         stack.push(root);
         while(!stack.empty())
         {
             curr = stack.top();  //当前stack的栈顶节点
-            if(curr->left && pre != (curr->left) && pre != (curr->right))
+            if(curr->left && pre != curr->left && pre != curr->right)
             {
                 stack.push(curr->left);
             }
-            else if(curr->right && pre != (curr->right))
+            else if(curr->right && pre != curr->right)
             {
                 stack.push(curr->right);                
             }
