@@ -24,6 +24,37 @@
 4、循环交换结束，返回根节点;
 */
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if(!root)
+            return NULL;
+        stack<TreeNode*> stack;
+        stack.push(root);
+        while(!stack.empty())
+        {
+            TreeNode* curr = stack.top();
+            TreeNode* tmp = curr->left;
+            curr->left = curr->right;
+            curr->right = tmp;
+            stack.pop();
+            if(curr->left)
+                stack.push(curr->left);
+            if(curr->right)
+                stack.push(curr->right);
+        }
+        return root;
+    }
+};
 
 /*方法二：广度优先搜索BFS
 队列存储，左右节点进行交换，循环翻转每个节点的左右子节点，将未翻转的子节点存入队列中，循环直到队列里所有节点都循环交换完为止。
