@@ -66,6 +66,38 @@ public:
 ４、循环交换结束，返回根节点;
 */
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if(!root)
+            return NULL;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty())
+        {
+            TreeNode* curr = q.front();
+            TreeNode* tmp = curr->left;
+            curr->left = curr->right;
+            curr->right = tmp;
+            q.pop();
+            if(curr->left)
+                q.push(curr->left);
+            if(curr->right)
+                q.push(curr->right);
+        }
+        return root;
+    }
+};
+
 /*方法三：递归
 １、判断节点是否为空，为空则返回NULL;
 ２、交换根节点的左右节点；
