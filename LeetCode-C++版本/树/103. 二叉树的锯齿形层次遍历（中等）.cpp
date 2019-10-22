@@ -12,3 +12,49 @@
   [15,7]
 ]
 */
+
+/*方法：利用STL
+奇数层节点的左子节点先进栈，右子节点后进栈，访问偶数层节点时，顺序相反。
+*/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        if(!root)
+            return res;
+        queue<TreeNode*> q;
+        TreeNode* tmp;
+        q.push(root);
+        bool isReverse = false;
+        while(!q.empty())
+        {
+            vector<int> a;
+            int len = q.size();
+            for(int i=0;i<len;++i)
+            {
+                tmp = q.front();
+                a.push_back(tmp->val);
+                q.pop();
+                if(tmp->left)
+                    q.push(tmp->left);
+                if(tmp->right)
+                    q.push(tmp->right);
+            }
+            if(isReverse)
+                reverse(a.begin(),a.end());
+            isReverse=!isReverse;
+            res.push_back(a);
+        }
+        return res;
+    }
+};
